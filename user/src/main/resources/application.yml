@@ -56,4 +56,4 @@ logging:
 
 management:
   security:
-    enabled: false #
+    enabled: false #qqq
