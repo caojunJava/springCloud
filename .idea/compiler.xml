@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-client" />
+        <module name="config-server" />
+        <module name="eureka" />
+        <module name="feign" />
+        <module name="ribbon" />
+        <module name="security" />
+        <module name="security-cas" />
+        <module name="service-hello" />
+        <module name="service-hi" />
+        <module name="springCloud" />
+        <module name="turbine" />
+        <module name="user" />
+        <module name="zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="config-client" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="eureka" target="1.8" />
+      <module name="feign" target="1.8" />
+      <module name="ribbon" target="1.8" />
+      <module name="security" target="1.8" />
+      <module name="security-cas" target="1.8" />
+      <module name="service-hello" target="1.8" />
+      <module name="service-hi" target="1.8" />
+      <module name="springCloud" target="1.5" />
+      <module name="turbine" target="1.8" />
+      <module name="user" target="1.8" />
+      <module name="zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

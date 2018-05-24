@@ -1,0 +1,59 @@
+server:
+  port: 8888 #����˿�
+spring:
+  application:
+    name: service-hi #ָ��������
+################################################################
+# mysql ��������
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
+    username: user3
+    password: 123456
+
+#  jpa:
+#    hibernate:
+#      #ddl-auto: create #ddl-auto:��Ϊcreate��ʾÿ�ζ����½���
+#      ddl-auto: update #ddl-auto:��Ϊupdate��ʾÿ�ζ��������½���
+#    show-sql: true
+################################################################
+################################################################
+#spring����Mybatis����
+#pojo����ɨ���
+mybatis:
+  type-aliases-package: com.finstone.popj
+  mapper-locations: classpath*:mapper/**/*.xml
+################################################################
+################################################################
+eureka:
+  client:
+    registerWithEureka: true #�Ƿ��Լ�ע�ᵽEureka�����У�Ĭ��Ϊtrue
+    fetchRegistry:  true  #�Ƿ��Eureka�л�ȡע����Ϣ��Ĭ��Ϊtrue
+    serviceUrl: #Eureka�ͻ�����Eureka����˽��н����ĵ�ַ
+      defaultZone: http://127.0.0.1:8761/eureka/
+    eurekaServerConnectTimeoutSeconds: 60
+    eurekaServerReadTimeoutSeconds: 60
+  instance:
+    prefer-ip-address:  true  #���Լ���ip��ַע�ᵽEureka������
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port} #ָ��ʵ��id
+    lease-expiration-duration-in-seconds: 30 #��Լ����ʱ������Ĭ��30�룩
+    lease-renewal-interval-in-seconds: 10 # ��Լ����ʱ�䣨Ĭ��90�룩
+    leaseRenewalIntervalInSeconds: 10 #����ʱ��
+################################################################
+
+################################################################
+logging:
+  level:
+    root: debug
+#    org.springframework.web: DEBUG
+  file: /log/log/my_provide.log
+  pattern:
+    console: "%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n"
+    file: "%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n"
+################################################################
+
+management:
+  security:
+    enabled: true #�Ƿ���actuator��ȫ��֤

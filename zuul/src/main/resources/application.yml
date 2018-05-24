@@ -1,0 +1,27 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    eurekaServerConnectTimeoutSeconds: 60
+    eurekaServerReadTimeoutSeconds: 60
+  instance:
+    prefer-ip-address:  true  #���Լ���ip��ַע�ᵽEureka������
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port} #ָ��ʵ��id
+    lease-expiration-duration-in-seconds: 30 #��Լ����ʱ������Ĭ��30�룩
+    lease-renewal-interval-in-seconds: 10 # ��Լ����ʱ�䣨Ĭ��90�룩
+    leaseRenewalIntervalInSeconds: 10 #����ʱ��
+server:
+  port: 8799
+spring:
+  application:
+    name: service-zuul
+
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: service-ribbon
+    api-b:
+      path: /api-b/**
+      serviceId: service-feign

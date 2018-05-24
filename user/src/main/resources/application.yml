@@ -1,0 +1,59 @@
+server:
+  port: 8862 #??????
+spring:
+  application:
+    name: firstspringcloud-user #?????????
+################################################################
+# mysql ????????
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@localhost:1521:ORCL
+    username: user3
+    password: 123456
+
+#  jpa:
+#    hibernate:
+#      #ddl-auto: create #ddl-auto:???create?????��????????
+#      ddl-auto: update #ddl-auto:???update?????��????????????
+#    show-sql: true
+################################################################
+################################################################
+#spring????Mybatis????
+#pojo????????
+mybatis:
+  type-aliases-package: com.finstone.popj
+  mapper-locations: classpath:mapper/UserMapper.xml
+################################################################
+################################################################
+eureka:
+  client:
+    registerWithEureka: true #?????????Eureka?????��?????true
+    fetchRegistry:  true  #????Eureka?��??????????????true
+    serviceUrl: #Eureka???????Eureka???????��???????
+      defaultZone: http://127.0.0.1:8761/eureka/
+    eurekaServerConnectTimeoutSeconds: 60
+    eurekaServerReadTimeoutSeconds: 60
+  instance:
+    prefer-ip-address:  true  #???????ip??????Eureka??????
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port} #??????id
+    lease-expiration-duration-in-seconds: 30 #?????????????????30??
+    lease-renewal-interval-in-seconds: 10 # ?????????????90??
+    leaseRenewalIntervalInSeconds: 10 #???????
+################################################################
+
+################################################################
+logging:
+  level:
+    root: debug
+#    org.springframework.web: DEBUG
+  file: /log/log/my_provide.log
+  pattern:
+    console: "%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n"
+    file: "%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n"
+################################################################
+
+management:
+  security:
+    enabled: false #?????actuator??????
